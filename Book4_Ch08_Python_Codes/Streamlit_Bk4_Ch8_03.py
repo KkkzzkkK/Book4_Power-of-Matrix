@@ -46,19 +46,19 @@ yh=[]
 for k in range(-m, m+1):
     xh.extend([-m, m, np.nan])
     yh.extend([k, k, np.nan])
-    
+
 fig.add_trace(go.Scatter(x=xh, y=yh, mode="lines", line_width=lw,
                          line_color = 'blue'), 1, 1)
 
 
 with st.sidebar:
-    
+
     st.latex(r'''
              A = \begin{bmatrix}
     a & b\\
     c & d
     \end{bmatrix}''')
-    
+
     a = st.slider('a',-2.0, 2.0, step = 0.1, value = 1.0)
     b = st.slider('b',-2.0, 2.0, step = 0.1, value = 0.0)  
     c = st.slider('c',-2.0, 2.0, step = 0.1, value = 0.0)  
@@ -86,7 +86,7 @@ Y = np.array(yh)
 
 Txhyh = A@np.stack((X, Y))# #transform by T the horizontal lines
 
-st.latex(r'A = ' + bmatrix(A))
+st.latex(f'A = {bmatrix(A)}')
 
 a1 = A[:,0].reshape((-1, 1))
 a2 = A[:,1].reshape((-1, 1))

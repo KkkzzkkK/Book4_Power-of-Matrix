@@ -18,14 +18,12 @@ from scipy.spatial import distance
 
 def fcn_Minkowski(xx, yy, mu, p = 2, Chebychev = False):
     
-    if Chebychev:
-        
-        zz = np.maximum(np.abs(xx - mu[0]),np.abs(yy - mu[1]))
-        
-    else:
-        zz = ((np.abs((xx - mu[0]))**p) + (np.abs((yy - mu[1]))**p))**(1./p)
-    
-    return zz
+    return (
+        np.maximum(np.abs(xx - mu[0]), np.abs(yy - mu[1]))
+        if Chebychev
+        else ((np.abs((xx - mu[0])) ** p) + (np.abs((yy - mu[1])) ** p))
+        ** (1.0 / p)
+    )
 
 def fcn_mahal(xx, yy, mu, Sigma, standardized = False):
     

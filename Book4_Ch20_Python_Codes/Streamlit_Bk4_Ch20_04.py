@@ -29,7 +29,7 @@ def bmatrix(a):
     return '\n'.join(rv)
 
 with st.sidebar:
-    
+
     st.latex(r'''
              \Sigma = \begin{bmatrix}
     \sigma_1^2 & 
@@ -37,24 +37,24 @@ with st.sidebar:
     \rho \sigma_1 \sigma_2 & 
     \sigma_2^2
     \end{bmatrix}''')
-    
-    
+
+
     st.write('$\sigma_1$')
     sigma_1 = st.slider('sigma_1',1.0, 2.0, step = 0.1)
 
     st.write('$\sigma_2$')
     sigma_2 = st.slider('sigma_2',1.0, 2.0, step = 0.1)
-    
+
     st.write('$\u03C1$')
     rho_12 = st.slider('rho',-0.9, 0.9, step = 0.1)
-        
+
 #%%
 
 st.latex(r'''
    f(x) = \frac{1}{\sqrt{2\pi} \sigma} 
           \exp\left( -\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{\!2}\,\right)
           ''')
-  
+
 st.latex(r'''
    f(x) = \frac{1}{\left( 2 \pi \right)^{\frac{D}{2}} 
           \begin{vmatrix}
@@ -65,7 +65,7 @@ st.latex(r'''
           \left( x - \mu \right)^{T} \Sigma^{-1} \left( x - \mu \right)
           \right)
           ''')
-          
+
 #%%
 x1 = np.linspace(-3,3,101)
 x2 = np.linspace(-3,3,101)
@@ -92,10 +92,9 @@ st.latex(r'''\Sigma = \begin{bmatrix}%s & %s\\%s & %s\end{bmatrix}'''
            rho_12*sigma_1*sigma_2, 
            sigma_2**2))
 st.latex(r'''\Sigma = V \Lambda V^{T}''')
-st.latex(bmatrix(Sigma) + '=' + 
-         bmatrix(np.around(V, decimals=3)) + '@' + 
-         bmatrix(np.around(D, decimals=3)) + '@' + 
-         bmatrix(np.around(V.T, decimals=3)))
+st.latex(
+    f'{bmatrix(Sigma)}={bmatrix(np.around(V, decimals=3))}@{bmatrix(np.around(D, decimals=3))}@{bmatrix(np.around(V.T, decimals=3))}'
+)
 
 #%% Plot 3D surface
 

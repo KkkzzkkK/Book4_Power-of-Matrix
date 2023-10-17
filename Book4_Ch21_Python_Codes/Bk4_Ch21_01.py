@@ -11,13 +11,12 @@
 import numpy as np
 
 def is_pos_def(A):
-    if np.array_equal(A, A.T):
-        try:
-            np.linalg.cholesky(A)
-            return True
-        except np.linalg.LinAlgError:
-            return False
-    else:
+    if not np.array_equal(A, A.T):
+        return False
+    try:
+        np.linalg.cholesky(A)
+        return True
+    except np.linalg.LinAlgError:
         return False
 
 A = np.array([[1,0],

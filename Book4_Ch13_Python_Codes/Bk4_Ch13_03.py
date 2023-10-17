@@ -46,11 +46,10 @@ for j, theat_i in enumerate(theta_array):
              marker = 'x',color = colors_j,
              markersize = 15)
     # plot the initial point
-    
+
     x_array = x
 
-    for i in np.arange(20):
-
+    for _ in np.arange(20):
         x = A@x
         x_array = np.column_stack((x_array,x))
 

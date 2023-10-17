@@ -98,63 +98,55 @@ def heatmap(Matrices,Titles,Ranges,Equal_tags):
 def plot_four_figs(X,v_j,idx):
 
     # Fig 1: X@v_j = z_j
-    
+
     z_j = X@v_j
-    Titles = ['$X$',
-              '$v_' + str(idx) + '$',
-              '$z_' + str(idx) + '$']
-    
+    Titles = ['$X$', f'$v_{str(idx)}$', f'$z_{str(idx)}$']
+
     Ranges = [[-2,11],
               [-1,1],
               [-2,11]]
-    
+
     Equal_tags = [False,True,False]
     heatmap([X,v_j,z_j],Titles,Ranges,Equal_tags)
 
     # Fig 2: z@v_j.T = X_j
     X_j = z_j@v_j.T
-    Titles = ['$z_' + str(idx) + '$',
-              '$v_' + str(idx) + '^T$',
-              '$X_' + str(idx) + '$']
-    
+    Titles = [f'$z_{str(idx)}$', f'$v_{str(idx)}^T$', f'$X_{str(idx)}$']
+
     Ranges = [[-2,11],
               [-1,1],
               [-2,11]]
-    
+
     Equal_tags = [False,True,False]
-    
+
     heatmap([z_j,v_j.T,X_j],Titles,Ranges,Equal_tags)
 
     # Fig 3: T_j = v_j@v_j.T
     T_j = v_j@v_j.T
-    
-    Titles = ['$v_' + str(idx) + '$',
-              '$v_' + str(idx) + '^T$',
-              '$T_' + str(idx) + '$']
-    
+
+    Titles = [f'$v_{str(idx)}$', f'$v_{str(idx)}^T$', f'$T_{str(idx)}$']
+
     Ranges = [[-1,1],
               [-1,1],
               [-1,1]]
-    
+
     Equal_tags = [True,True,True]
-    
+
     heatmap([v_j,v_j.T,T_j],Titles,Ranges,Equal_tags)
 
-    
+
     # Fig 4: X@T_j = X_j
-    
+
     T_j = X@T_j
-    
-    Titles = ['$X$',
-              '$T_' + str(idx) + '$',
-              '$X_' + str(idx) + '$']
-    
+
+    Titles = ['$X$', f'$T_{str(idx)}$', f'$X_{str(idx)}$']
+
     Ranges = [[-2,11],
               [-1,1],
               [-2,11]]
-    
+
     Equal_tags = [False,True,False]
-    
+
     heatmap([X,T_j,X_j],Titles,Ranges,Equal_tags)
 
 

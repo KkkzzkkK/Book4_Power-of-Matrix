@@ -5,6 +5,7 @@ Created on Mon Sep 12 21:19:47 2022
 @author: Work
 """
 
+
 import pandas as pd
 import plotly.graph_objs as go
 import streamlit as st
@@ -15,7 +16,7 @@ with st.sidebar:
                     max_value = 20,
                     min_value = 10,
                     step = 1)
-    
+
 x1 = np.linspace(0,1,num)
 x2 = x1
 x3 = x1
@@ -34,15 +35,20 @@ df = pd.DataFrame({'X': x1_,
                    'G': (x2_*256).round(),
                    'B': (x3_*256).round()})
 
-trace = go.Scatter3d(x=df.X,
-                      y=df.Y,
-                      z=df.Z,
-                      mode='markers',
-                      marker=dict(size=3,
-                                  color=['rgb({},{},{})'.format(r,g,b) 
-                                         for r,g,b in 
-                                         zip(df.R.values, df.G.values, df.B.values)],
-                                  opacity=0.9,))
+trace = go.Scatter3d(
+    x=df.X,
+    y=df.Y,
+    z=df.Z,
+    mode='markers',
+    marker=dict(
+        size=3,
+        color=[
+            f'rgb({r},{g},{b})'
+            for r, g, b in zip(df.R.values, df.G.values, df.B.values)
+        ],
+        opacity=0.9,
+    ),
+)
 
 data = [trace]
 

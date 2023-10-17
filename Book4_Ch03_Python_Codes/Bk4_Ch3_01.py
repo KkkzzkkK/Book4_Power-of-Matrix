@@ -27,13 +27,13 @@ for p, ax in zip(p_values, axes.flat):
         zz = np.maximum(np.abs(xx1),np.abs(xx2))
     else:
         zz = ((np.abs((xx1))**p) + (np.abs((xx2))**p))**(1./p)
-    
+
     # plot contour of Lp
     ax.contourf(xx1, xx2, zz, 20, cmap='RdYlBu_r')
-    
+
     # plot contour of Lp = 1
     ax.contour (xx1, xx2, zz, [1], colors='k', linewidths = 2) 
-    
+
     # decorations
 
     ax.axhline(y=0, color='k', linewidth = 0.25)
@@ -46,7 +46,7 @@ for p, ax in zip(p_values, axes.flat):
     ax.spines['left'].set_visible(False)
     ax.set_xlabel('$x_1$')
     ax.set_ylabel('$x_2$')
-    ax.set_title('p = ' + str(p))
+    ax.set_title(f'p = {str(p)}')
     ax.set_aspect('equal', adjustable='box')
 
 plt.show()
