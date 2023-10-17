@@ -46,21 +46,21 @@ yh=[]
 for k in range(-m, m+1):
     xh.extend([-m, m, np.nan])
     yh.extend([k, k, np.nan])
-    
+
 fig.add_trace(go.Scatter(x=xh, y=yh, mode="lines", line_width=lw,
                          line_color = 'blue'), 1, 1)
 
 
 with st.sidebar:
-    
+
     st.latex(r'''
              R = \begin{bmatrix}
     \cos(\theta) & -\sin(\theta)\\
     \sin(\theta) & \cos(\theta)
     \end{bmatrix}''')
-    
+
     theta = st.slider('Theta degree: ',-180, 180, step = 5, value = 0)
-    
+
     theta = theta/180*np.pi
 
 
@@ -85,7 +85,7 @@ Y = np.array(yh)
 
 Txhyh = R@np.stack((X, Y))# #transform by T the horizontal lines
 
-st.latex(r'R = ' + bmatrix(R))
+st.latex(f'R = {bmatrix(R)}')
 
 r1 = R[:,0].reshape((-1, 1))
 r2 = R[:,1].reshape((-1, 1))

@@ -19,7 +19,7 @@ x1,x2 = sympy.symbols('x1 x2')
 
 f_x = x1*exp(-(x1**2 + x2**2))
 
-st.latex('f(x_1, x_2) = ' + sympy.latex(f_x))
+st.latex(f'f(x_1, x_2) = {sympy.latex(f_x)}')
 
 #take the gradient symbolically
 grad_f = [sympy.diff(f_x,var) for var in (x1,x2)]

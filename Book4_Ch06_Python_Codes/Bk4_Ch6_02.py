@@ -44,9 +44,9 @@ C_rep = np.zeros_like(C)
 
 for i in np.arange(4):
     C_i = A[:,[i]]@B[[i],:];
-    title = 'C' + str(i + 1)
+    title = f'C{str(i + 1)}'
     plot_heatmap(C_i,title)
-    
+
     C_rep = C_rep + C_i
 
 # Visualize reproduced C

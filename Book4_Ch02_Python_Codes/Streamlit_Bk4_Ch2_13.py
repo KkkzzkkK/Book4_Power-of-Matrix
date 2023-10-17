@@ -28,12 +28,12 @@ def bmatrix(a):
 
 #%%
 with st.sidebar:
-    
+
     num_a = st.slider('Number of rows, a:',
               3,6,step = 1)
     num_b = st.slider('Number of rows, b:',
               3,6,step = 1)
-    
+
 a = np.random.uniform(0,1,num_a).reshape((-1,1))
 a = np.round(a,1)
 b = np.random.uniform(0,1,num_b).reshape((-1,1))
@@ -47,17 +47,17 @@ tensor_a_b = a@b.T
 
 #%% visualization
 
-st.latex('a = ' + bmatrix(a))
-st.latex('b = ' + bmatrix(b))
+st.latex(f'a = {bmatrix(a)}')
+st.latex(f'b = {bmatrix(b)}')
 st.latex('a \otimes b = ab^{T}')
-st.latex( bmatrix(a) + '@' + bmatrix(b.T) + ' = ' + bmatrix(tensor_a_b))
+st.latex(f'{bmatrix(a)}@{bmatrix(b.T)} = {bmatrix(tensor_a_b)}')
 col1, col2, col3 = st.columns(3)
 
 with col1:
     fig_a = px.imshow(a, text_auto=show_number, 
                   color_continuous_scale='viridis',
                   aspect = 'equal')
-    
+
     fig_a.update_layout(height=400, width=300)
     fig_a.layout.coloraxis.showscale = False
     st.plotly_chart(fig_a)
@@ -66,7 +66,7 @@ with col2:
     fig_b = px.imshow(b, text_auto=show_number, 
                   color_continuous_scale='viridis',
                   aspect = 'equal')
-    
+
     fig_b.update_layout(height=400, width=300)
     fig_b.layout.coloraxis.showscale = False
     st.plotly_chart(fig_b)
@@ -75,9 +75,9 @@ with col3:
     fig_ab = px.imshow(tensor_a_b, text_auto=show_number, 
                   color_continuous_scale='viridis',
                   aspect = 'equal')
-    
+
     fig_ab.update_layout(height=400, width=400)
-    
+
     fig_ab.layout.coloraxis.showscale = False
     st.plotly_chart(fig_ab)
 

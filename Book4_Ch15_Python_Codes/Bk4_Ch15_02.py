@@ -172,7 +172,7 @@ for j in [0, 1, 2, 3]:
     ax = sns.heatmap(X_j,cmap='RdBu_r',vmax = all_max,vmin = all_min,
                      cbar_kws={"orientation": "horizontal"})
     ax.set_aspect("equal")
-    title_txt = '$s_'+ str(j+1) + 'u_'+ str(j+1) + 'v_'+ str(j+1) + '^T$'
+    title_txt = f'$s_{str(j + 1)}u_{str(j + 1)}v_{str(j + 1)}^T$'
     plt.title(title_txt)
 
 #%% projection
@@ -180,46 +180,46 @@ for j in [0, 1, 2, 3]:
 for j in [0, 1, 2, 3]:
     
     fig, axs = plt.subplots(1, 7, figsize=(12, 3))
-    
+
     v_j = V[:,j]
     v_j = np.matrix(v_j).T
     s_j = S[j,j]
     s_j = np.matrix(s_j)
     u_j = U[:,j]
     u_j = np.matrix(u_j).T
-    
+
     plt.sca(axs[0])
     ax = sns.heatmap(X,cmap='RdBu_r',vmax = all_max,vmin = all_min,
                      cbar_kws={"orientation": "horizontal"})
     ax.set_aspect("equal")
     plt.title('X')
-    
+
     plt.sca(axs[1])
     plt.title('@')
     plt.axis('off')
-    
+
     plt.sca(axs[2])
     ax = sns.heatmap(v_j,cmap='RdBu_r',vmax = all_max,vmin = all_min,
                      cbar_kws={"orientation": "horizontal"})
     ax.set_aspect("equal")
-    plt.title('v_'+ str(j+1))
-    
+    plt.title(f'v_{str(j + 1)}')
+
     plt.sca(axs[3])
     plt.title('=')
     plt.axis('off')
-    
+
     plt.sca(axs[4])
     ax = sns.heatmap(s_j,cmap='RdBu_r',vmax = all_max,vmin = all_min,
                      cbar_kws={"orientation": "horizontal"})
     ax.set_aspect("equal")
-    plt.title('s_'+ str(j+1))
-    
+    plt.title(f's_{str(j + 1)}')
+
     plt.sca(axs[5])
     plt.title('@')
     plt.axis('off')
-    
+
     plt.sca(axs[6])
     ax = sns.heatmap(u_j,cmap='RdBu_r', vmax = all_max,vmin = all_min,
                      cbar_kws={"orientation": "horizontal"})
     ax.set_aspect("equal")
-    plt.title('u_'+ str(j+1))
+    plt.title(f'u_{str(j + 1)}')

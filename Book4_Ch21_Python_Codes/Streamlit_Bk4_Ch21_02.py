@@ -27,22 +27,22 @@ def bmatrix(a):
     return '\n'.join(rv)
 
 with st.sidebar:
-    
+
     st.latex(r'''
              A = \begin{bmatrix}
     a & b\\
     b & c
     \end{bmatrix}''')
-    
+
     st.latex(r'''
              f(x_1,x_2) = ax_1^2 + 2bx_1x_2 + cx_2^2
              ''')
-    
-    
+
+
     a = st.slider('a',-2.0, 2.0, step = 0.1)
     b = st.slider('b',-2.0, 2.0, step = 0.1)  
     c = st.slider('c',-2.0, 2.0, step = 0.1)  
-    
+
 #%%
 
 x1_ = np.linspace(-2, 2, 101)
@@ -61,10 +61,9 @@ D = np.diag(D)
 
 st.latex(r'''A = \begin{bmatrix}%s & %s\\%s & %s\end{bmatrix}''' %(a, b, b, c))
 st.latex(r'''A = V \Lambda V^{T}''')
-st.latex(bmatrix(A) + '=' + 
-         bmatrix(np.around(V, decimals=3)) + '@' + 
-         bmatrix(np.around(D, decimals=3)) + '@' + 
-         bmatrix(np.around(V.T, decimals=3)))
+st.latex(
+    f'{bmatrix(A)}={bmatrix(np.around(V, decimals=3))}@{bmatrix(np.around(D, decimals=3))}@{bmatrix(np.around(V.T, decimals=3))}'
+)
 
 x = np.array([[x1,x2]]).T
 
